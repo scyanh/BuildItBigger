@@ -30,6 +30,8 @@ public class MyEndpoint {
         MyBean response = new MyBean();
         response.setData("Hi, " + name);
 
+        //response.getJoke();
+
         return response;
     }
 

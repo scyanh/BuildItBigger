@@ -1,7 +1,6 @@
 package com.udacity.gradle.builditbigger;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Pair;
@@ -9,7 +8,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.caydeem.androidlibrary.DisplayJokeActivity;
 import com.example.SayJoke;
 
 
@@ -20,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        new EndpointsAsyncTask().execute(new Pair<Context, String>(this, "Manfred"));
+        //new EndpointsAsyncTask().execute(new Pair<Context, String>(this, "Manfred"));
     }
 
 
@@ -52,9 +50,13 @@ public class MainActivity extends AppCompatActivity {
         //Toast.makeText(this, "derp", Toast.LENGTH_SHORT).show();
         //Toast.makeText(this, sayJoke.getRandomJoke(), Toast.LENGTH_SHORT).show();
 
+        /*
         Intent myIntent=new Intent(this, DisplayJokeActivity.class);
         myIntent.putExtra(DisplayJokeActivity.INTENT_JOKE, sayJoke.getRandomJoke());
         startActivity(myIntent);
+        */
+
+        new EndpointsAsyncTask().execute(new Pair<Context, String>(this, "Manfred"));
 
     }
 
