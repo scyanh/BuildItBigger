@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(myIntent);
         */
 
-        new EndpointsAsyncTask().execute(new Pair<Context, String>(this, "Manfred"));
+        new EndpointsAsyncTask(getApplicationContext(), "test").execute(new Pair<Context, String>(this, "Manfred"));
 
     }
 

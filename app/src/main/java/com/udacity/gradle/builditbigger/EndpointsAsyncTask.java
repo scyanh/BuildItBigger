@@ -17,14 +17,25 @@ import java.io.IOException;
 /**
  * Created by ashpro on 03/07/16.
  */
-public class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> {
+//public class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> {
+class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> {
     private static MyApi myApiService = null;
-    private Context context;
+    private Context mContext;
+    private String mTest="test";
+
+    public EndpointsAsyncTask(Context context, String temp) {
+        mContext=context;
+    }
+
+    /*public EndpointsAsyncTask(Context context) {
+        this.context = context;
+    }
+    */
 
     @Override
     protected String doInBackground(Pair<Context, String>... params) {
-        context = params[0].first;
-        String name = params[0].second;
+        //mContext = params[0].first;
+        //String name = params[0].second;
 
         if(myApiService == null) {  // Only do this once
             MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(),
@@ -33,7 +44,7 @@ public class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, S
                     // - 10.0.2.2 is localhost's IP address in Android emulator
                     // - turn off compression when running against local devappserver
                     //.setRootUrl("http://10.0.2.2:8080/_ah/api/")
-                    .setRootUrl(context.getString(R.string.root_url_api))
+                    .setRootUrl(mContext.getString(R.string.root_url_api))
                     //.setRootUrl("https://builditbigger-1362.appspot.com/_ah/api/")
                     .setGoogleClientRequestInitializer(new GoogleClientRequestInitializer() {
                         @Override
@@ -47,7 +58,7 @@ public class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, S
         }
 
         try {
-            return myApiService.sayHi(name).execute().getData();
+            return myApiService.sayHi(mTest).execute().getData();
         } catch (IOException e) {
             return e.getMessage();
         }
@@ -60,9 +71,9 @@ public class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, S
     }
 
     private void startJokeDisplayActivity(String mResult) {
-        Intent intent = new Intent(context, DisplayJokeActivity.class);
+        Intent intent = new Intent(mContext, DisplayJokeActivity.class);
         intent.putExtra(DisplayJokeActivity.INTENT_JOKE, mResult);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        context.startActivity(intent);
+        mContext.startActivity(intent);
     }
 }
