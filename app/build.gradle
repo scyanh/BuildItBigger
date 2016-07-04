@@ -48,7 +48,8 @@ dependencies {
     compile project(":jokelibrary")
 
     //Android Library
-    compile project(":displayjokelibrary")
+    //compile project(":displayjokelibrary")
+    compile project(":androidlibrary")
 
     compile 'com.android.support:appcompat-v7:22.2.0'
     compile 'com.android.support:support-v4:22.2.0'

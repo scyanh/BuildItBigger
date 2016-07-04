@@ -1,4 +1,4 @@
-package com.caydeem.displayjokelibrary;
+package com.caydeem.androidlibrary;
 
 import org.junit.Test;
 
